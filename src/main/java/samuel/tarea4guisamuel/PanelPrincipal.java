@@ -24,6 +24,8 @@ public class PanelPrincipal extends JPanel implements ActionListener {
     private PanelBotones botonera;
     private JTextArea areaTexto;
     private int tipoOperacion;
+    private static String MuestraPantalla = "";
+    
 
     // Constructor
     public PanelPrincipal() {
@@ -53,13 +55,15 @@ public class PanelPrincipal extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-
         // Se obtiene el objeto que desencadena el evento
         Object o = ae.getSource();
         // Si es un botón
+        MuestraPantalla += "";
         if (o instanceof JButton) {
+            
             System.out.println(((JButton) o).getText());
-            areaTexto.setText(((JButton) o).getText());
+            MuestraPantalla += ((JButton) o).getText();
+            areaTexto.setText(MuestraPantalla);
 
         }
 
