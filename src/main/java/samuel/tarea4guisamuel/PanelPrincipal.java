@@ -79,6 +79,19 @@ public class PanelPrincipal extends JPanel implements ActionListener {
             if (!((JButton) o).getText().contains("C")) {
                 MuestraPantalla += ((JButton) o).getText();
             }
+            
+            //Si el texto del botón contiene alguno de esos operadores y el String 
+            //MuestraPantalla está vacia, mete los números que se hubieran introducido en la variable
+            //lado_izquierdo para poder después operar con ella.
+            //!MuestraPantalla.isEmpty() está porque permito que se ponga - para poder poner números en 
+            //negativos
+            if (((JButton) o).getText().equals("*") || ((JButton) o).getText().equals("+")
+                    || ((JButton) o).getText().equals("-") || ((JButton) o).getText().equals("/") && MuestraPantalla.length() != 0) {
+
+                lado_izquierdo = Integer.parseInt(numeros);
+                numeros = "0";
+
+            }
 
         }
 
