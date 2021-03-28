@@ -104,6 +104,18 @@ public class PanelPrincipal extends JPanel implements ActionListener {
 
             areaTexto.setText(MuestraPantalla);
 
+            //En el caso en el que el texto del botón no es ningún operador, y el String 
+            //MuestraPantalla no está vacia, mete el número que contenga el botón en numeros
+            if (((JButton) o).getText().equals("0") || ((JButton) o).getText().equals("1")
+                    || ((JButton) o).getText().equals("2") || ((JButton) o).getText().equals("3")
+                    || ((JButton) o).getText().equals("4") || ((JButton) o).getText().equals("5")
+                    || ((JButton) o).getText().equals("6") || ((JButton) o).getText().equals("7")
+                    || ((JButton) o).getText().equals("8") || ((JButton) o).getText().equals("9") || ((JButton) o).getText().equals("-") && MuestraPantalla.length() != 0) {
+
+                numeros += ((JButton) o).getText();
+
+            }
+
         }
 
     }
