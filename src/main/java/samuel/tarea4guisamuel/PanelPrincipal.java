@@ -13,7 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -23,14 +23,17 @@ public class PanelPrincipal extends JPanel implements ActionListener {
     // Atributos de la clase (privados)
     private PanelBotones botonera;
     private JTextArea areaTexto;
-    private int tipoOperacion;
+
     private static String MuestraPantalla = "";
-    
+    private static int lado_izquierdo = 0;
+    //Contiene un 0 la variable 0 dado que necesito que tenga algún número para que no me de error al 
+    //meterlo en lado_izquierdo
+    private static String numeros = "0";
 
     // Constructor
     public PanelPrincipal() {
         initComponents();
-        tipoOperacion = -1; // No hay operaciones en la calculadora
+
     }
 
     // Se inicializan los componentes gráficos y se colocan en el panel
@@ -58,15 +61,21 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         // Se obtiene el objeto que desencadena el evento
         Object o = ae.getSource();
         // Si es un botón
-        MuestraPantalla += "";
+
         if (o instanceof JButton) {
-            
-            System.out.println(((JButton) o).getText());
-            MuestraPantalla += ((JButton) o).getText();
-            areaTexto.setText(MuestraPantalla);
+
+            //Si el String que se utiliza para mostrar las operaciones está vacía 
+            //y el texto del botón es * o / ,muestra en pantalla el mensaje que aparcece debajo
+            if ((MuestraPantalla.isEmpty())
+                    && (((JButton) o).getText().equals("*")
+                    || ((JButton) o).getText().equals("/"))) {
+
+                o = "SYNTAX ERROR";
+                areaTexto.setText(o.toString());
+
+            }
 
         }
 
     }
-
 }
