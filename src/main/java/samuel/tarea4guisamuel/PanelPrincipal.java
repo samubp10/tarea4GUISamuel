@@ -92,6 +92,15 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 numeros = "0";
 
             }
+            
+             //Si el String MuestraPantalla contiene la letra C, hago que las variables tengan su valor inicial
+            if (((JButton) o).getText().contains("C")) {
+
+                MuestraPantalla = "";
+                numeros = "0";
+                lado_izquierdo = 0;
+
+            }
 
         }
 
