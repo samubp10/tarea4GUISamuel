@@ -74,6 +74,11 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 areaTexto.setText(o.toString());
 
             }
+            
+            //Mete el texto que contiene el botón en MuestraPantalla 
+            if (!((JButton) o).getText().contains("C")) {
+                MuestraPantalla += ((JButton) o).getText();
+            }
 
         }
 
