@@ -115,6 +115,68 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 numeros += ((JButton) o).getText();
 
             }
+            //Cuando el usuario pulse el botón igual, dependiendo de la operación dará un resultado
+            if (MuestraPantalla.contains("=")) {
+                //La variable que se utilizará para mostrar el resultado de las operaciones de suma,
+                // resta y multiplicación
+                int resultadoSinDecimales = 0;
+                //La La variable que se utilizará para mostrar el resultado de las operaciones de división
+                double resultadoConDecimales = 0;
+                //Hago un casting de numeros(String) a numeroInt(int que será la que se use para operar
+                int numeroInt = Integer.parseInt(numeros);
+                //Si el operador contiene un +:
+                if (MuestraPantalla.contains("+")) {
+                    //Esta es la operación
+                    resultadoSinDecimales = (lado_izquierdo + numeroInt);
+                    //En la pantalla se muestra la operación y el resultado obtenido
+                    areaTexto.setText("" + MuestraPantalla + resultadoSinDecimales);
+                    //Vuelvo a poner todas las variables a 0
+                    MuestraPantalla = "";
+                    numeros = "0";
+                    lado_izquierdo = 0;
+                    resultadoSinDecimales = 0;
+
+                } else if (MuestraPantalla.contains("*")) {
+                    //Para la multiplicación he tenido que hacerla sumando dado que 
+                    // con el operador * no me funcionaba
+                    for (int i = 0; i < numeroInt; i++) {
+                        resultadoSinDecimales += lado_izquierdo;
+                    }
+                    //En la pantalla se muestra la operación y el resultado obtenido
+                    areaTexto.setText("" + MuestraPantalla + resultadoSinDecimales);
+                    //Vuelvo a poner todas las variables a 0
+                    MuestraPantalla = "";
+                    numeros = "0";
+                    lado_izquierdo = 0;
+                    resultadoSinDecimales = 0;
+
+                } else if (MuestraPantalla.contains("-")) {
+                    //He utilizado el operador + porque el segundo número se metía como un 
+                    //número negativo y se realizaba una resta, los números se terminaban
+                    //sumando, por ejemplo si el usuario metía 5-5, el resultado era 
+                    //10 dado que en realidad lo que hacía era 5 - -5.
+                    resultadoSinDecimales = lado_izquierdo + numeroInt;
+                    //En la pantalla se muestra la operación y el resultado obtenido
+                    areaTexto.setText("" + MuestraPantalla + resultadoSinDecimales);
+                    //Vuelvo a poner todas las variables a 0
+                    MuestraPantalla = "";
+                    numeros = "0";
+                    lado_izquierdo = 0;
+                    resultadoSinDecimales = 0;
+
+                } else if (MuestraPantalla.contains("/")) {
+                    //Esta es la operación, he utilizado la variable resultadoConDecimales,
+                    //que es un double, porque la división es la única que puede dar decimales
+                    resultadoConDecimales = lado_izquierdo / numeroInt;
+                    //En la pantalla se muestra la operación y el resultado obtenido
+                    areaTexto.setText("" + MuestraPantalla + resultadoConDecimales);
+                    //Vuelvo a poner todas las variables a 0
+                    MuestraPantalla = "";
+                    numeros = "0";
+                    lado_izquierdo = 0;
+                    resultadoConDecimales = 0;
+                }
+            }
 
         }
 
