@@ -74,12 +74,12 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 areaTexto.setText(o.toString());
 
             }
-            
+
             //Mete el texto que contiene el botón en MuestraPantalla 
             if (!((JButton) o).getText().contains("C")) {
                 MuestraPantalla += ((JButton) o).getText();
             }
-            
+
             //Si el texto del botón contiene alguno de esos operadores y el String 
             //MuestraPantalla está vacia, mete los números que se hubieran introducido en la variable
             //lado_izquierdo para poder después operar con ella.
@@ -92,8 +92,8 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 numeros = "0";
 
             }
-            
-             //Si el String MuestraPantalla contiene la letra C, hago que las variables tengan su valor inicial
+
+            //Si el String MuestraPantalla contiene la letra C, hago que las variables tengan su valor inicial
             if (((JButton) o).getText().contains("C")) {
 
                 MuestraPantalla = "";
@@ -101,6 +101,8 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 lado_izquierdo = 0;
 
             }
+
+            areaTexto.setText(MuestraPantalla);
 
         }
 
